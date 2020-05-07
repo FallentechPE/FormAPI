@@ -1,0 +1,25 @@
+name: PHPStan
+
+on: [push, pull_request]
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Create Vendor Directory
+        run: |
+          echo Making directory...
+          mkdir vendor
+          echo Directory made.
+      - name: Build Plugin
+        run: |
+          echo "Creating PHAR from source files"
+          sh scripts/build-pmmp.sh
+      - name: Archive Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: FormAPI.phar
+          path: FormAPI.phar
