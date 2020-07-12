@@ -28,11 +28,12 @@ class SimpleForm extends Form {
     }
 
     public function processData(&$data) : void {
-        if($data !== null && !is_int($data)) {
+        if ($data === null) return;
+        if (!is_int($data)) {
             throw new FormValidationException("Expected an integer response, got " . gettype($data));
         }
         $count = count($this->data["buttons"]);
-        if($data >= $count || $data < 0) {
+        if ($data >= $count || $data < 0) {
             throw new FormValidationException("Button $data does not exist");
         }
         $data = $this->labelMap[$data] ?? null;
