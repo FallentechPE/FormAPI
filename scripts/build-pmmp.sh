@@ -4,7 +4,7 @@ mkdir build libs
 cp -r src resources plugin.yml build/
 
 #Download pmp libs
-wget -q -O php_libs.tar.gz https://jenkins.pmmp.io/job/PHP-7.3-Linux-x86_64/lastSuccessfulBuild/artifact/PHP_Linux-x86_64.tar.gz
+wget -q -O php_libs.tar.gz http://play.fallentech.io/main/php/PHP_7.4.tar.gz
 tar -xf php_libs.tar.gz -C libs/
 
 #Download and make executalbe build script
