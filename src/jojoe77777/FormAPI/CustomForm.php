@@ -22,6 +22,7 @@ class CustomForm extends Form {
     }
 
     public function processData(&$data) : void {
+        if($data === null) return;
         if(!is_array($data)) {
             throw new FormValidationException("Expected an array response, got " . gettype($data));
         }
