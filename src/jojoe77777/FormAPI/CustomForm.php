@@ -21,27 +21,28 @@ class CustomForm extends Form {
         $this->data["content"] = [];
     }
 
-    public function processData(&$data) : void {
-        if($data === null) return;
-        if(!is_array($data)) {
-            throw new FormValidationException("Expected an array response, got " . gettype($data));
-        }
-        if(count($data) !== count($this->validationMethods)) {
-            throw new FormValidationException("Expected an array response with the size " . count($this->validationMethods) . ", got " . count($data));
-        }
-        $new = [];
-        foreach($data as $i => $v){
-            $validationMethod = $this->validationMethods[$i] ?? null;
-            if($validationMethod === null) {
-                throw new FormValidationException("Invalid element " . $i);
-            }
-            if(!$validationMethod($v)) {
-                throw new FormValidationException("Invalid type given for element " . $this->labelMap[$i]);
-            }
-            $new[$this->labelMap[$i]] = $v;
-        }
-        $data = $new;
-    }
+	public function processData(&$data) : void {
+		if($data !== null && !is_array($data)) {
+			throw new FormValidationException("Expected an array response, got " . gettype($data));
+		}
+		if(is_array($data)) {
+			if(count($data) !== count($this->validationMethods)) {
+				throw new FormValidationException("Expected an array response with the size " . count($this->validationMethods) . ", got " . count($data));
+			}
+			$new = [];
+			foreach($data as $i => $v){
+				$validationMethod = $this->validationMethods[$i] ?? null;
+				if($validationMethod === null) {
+					throw new FormValidationException("Invalid element " . $i);
+				}
+				if(!$validationMethod($v)) {
+					throw new FormValidationException("Invalid type given for element " . $this->labelMap[$i]);
+				}
+				$new[$this->labelMap[$i]] = $v;
+			}
+			$data = $new;
+		}
+	}
 
     /**
      * @param string $title

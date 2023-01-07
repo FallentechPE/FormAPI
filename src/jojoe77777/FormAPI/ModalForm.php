@@ -8,23 +8,26 @@ use pocketmine\form\FormValidationException;
 
 class ModalForm extends Form {
 
-    /** @var string */
-    private $content = "";
+	/** @var string */
+	private $content = "";
 
-    /**
-     * @param callable|null $callable
-     */
-    public function __construct(?callable $callable) {
-        parent::__construct($callable);
-        $this->data["type"] = "modal";
-        $this->data["title"] = "";
-        $this->data["content"] = $this->content;
-        $this->data["button1"] = "";
-        $this->data["button2"] = "";
-    }
+	/**
+	 * @param callable|null $callable
+	 */
+	public function __construct(?callable $callable) {
+		parent::__construct($callable);
+		$this->data["type"] = "modal";
+		$this->data["title"] = "";
+		$this->data["content"] = $this->content;
+		$this->data["button1"] = "";
+		$this->data["button2"] = "";
+	}
 
-    public function processData(&$data) : void {
-    }
+	public function processData(&$data) : void {
+		if(!is_bool($data)) {
+			throw new FormValidationException("Expected a boolean response, got " . gettype($data));
+		}
+	}
 
     /**
      * @param string $title
