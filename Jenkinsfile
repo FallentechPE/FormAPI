@@ -19,7 +19,7 @@ pipeline {
  post {
      always {
          deleteDir()
-         discordSend(customAvatarUrl: "https://i.imgur.com/kEaewDN.png", webhookURL: "https://discord.com/api/webhooks/1072959404028219515/ZD6OmpNjBpZ4CbblyqLHxNU5WJTEYRca16p7JnLIQp5eW7ZwNb3IwI-cyvQeYCy6f0_3", description: "**Build:** ${env.BUILD_NUMBER}\n**Status:** Success\n\n**Changes:**\n${env.BUILD_URL}", footer: "Fallentech Build System", link: "${env.BUILD_URL}", successful: true, title: "Build Success: FormAPI", unstable: false, result: "SUCCESS")
+         discordSend(customAvatarUrl: "https://i.imgur.com/kEaewDN.png", webhookURL: "https://ptb.discord.com/api/webhooks/1277783602507284541/rNmm2oun2qpet09xPW98IFYnLtY7EaKsz3K2LjQkDiwaEPoySpzKzpUiGL-kmG67Dhx-", description: "**Build:** ${env.BUILD_NUMBER}\n**Status:** Success\n\n**Changes:**\n${env.BUILD_URL}", footer: "Fallentech Build System", link: "${env.BUILD_URL}", successful: true, title: "Build Success: FormAPI", unstable: false, result: "SUCCESS")
      }
  }
 }
