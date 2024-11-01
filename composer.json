@@ -1,0 +1,24 @@
+{
+    "name": "fallentech/form-api",
+    "description": "formapi",
+    "type": "library",
+    "license": "GPL-3.0-only",
+    "autoload": {
+        "psr-0": {
+            "Fallentech\\FormApi\\": "src/"
+        }
+    },
+	"config": {
+		"platform": {
+			"php": "8.1"
+		},
+		"sort-packages": true
+	},
+    "minimum-stability": "dev",
+    "require": {},
+	"require-dev": {
+		"php": "^8.0",
+		"pocketmine/pocketmine-mp": "^5.3.0",
+		"phpstan/phpstan": "1.10.25"
+	}
+}
